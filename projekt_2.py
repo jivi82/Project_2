@@ -21,7 +21,7 @@ marks in a:
 * diagonal row
 '''
 print(game_rules,end="")
-print(f"{separator}\nLet's start the game\n{"-" * 44}")
+print(f"{separator}\nLet's start the game\n{'-' * 44}")
 
 # game grid
 board = [[" ", " ", " "],
@@ -39,13 +39,14 @@ def display_board():
 # player move
 def get_player_move(current_player):
     while True:
-        try:
-            move = int(input(f"Player {current_player} | Please enter your move number: "))
+        move = input(f"Player {current_player} | Please enter your move number: ")
+        if move.isdigit():
+            move = int(move)            
             if 1 <= move <= 9:
                 return move
             else:
                 print("Invalid input. Please enter a number between 1 and 9.")
-        except ValueError:
+        else:
             print("Invalid input. Please enter a number.")
 
 # update board
@@ -81,7 +82,6 @@ def check_grid():
 # main function
 def main():
     display_board()
-    print(separator)
     current_player = "X"
     taken_moves = []
     
